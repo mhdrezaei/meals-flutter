@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
   const MealsScreen({super.key, required this.meals, required this.title});
@@ -13,10 +14,9 @@ class MealsScreen extends StatelessWidget {
       itemCount: meals.length,
       itemBuilder: (ctx, index) {
         return ListTile(
-          title: Text(meals[index].title),
-          onTap: () {
-            // Handle meal tap
-          },
+          title: MealItem(meal: meals[index]),
+
+          // Handle meal tap
         );
       },
     );
@@ -25,6 +25,6 @@ class MealsScreen extends StatelessWidget {
       content = const Center(child: Text('No meals found!'));
     }
 
-    return Scaffold(appBar: AppBar(title: const Text('Meals')), body: content);
+    return Scaffold(appBar: AppBar(title: Text(title)), body: content);
   }
 }
